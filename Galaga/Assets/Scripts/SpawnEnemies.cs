@@ -7,7 +7,7 @@ public class SpawnEnemies : MonoBehaviour {
     public Camera camera;
     public float minSpawnTime = 2f;
     public float maxSpawnTime = 5f;
-    public GameObject enemy1;
+    public GameObject[] enemies;
     private Transform[] spawnPoints = new Transform[5];
 	// Use this for initialization
 	void Start () {
@@ -27,7 +27,8 @@ public class SpawnEnemies : MonoBehaviour {
 
     void Spawn() {
         int spawnPoint = Random.Range(0, 5);
-        Instantiate(enemy1, spawnPoints[spawnPoint].position, Quaternion.identity);
+        GameObject enemy = enemies[Random.Range(0, enemies.Length)];
+        Instantiate(enemy, spawnPoints[spawnPoint].position, Quaternion.identity);
         float spawnTime = Random.Range(minSpawnTime, maxSpawnTime);
         Invoke("Spawn", spawnTime);
     }

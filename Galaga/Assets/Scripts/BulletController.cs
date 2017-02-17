@@ -30,7 +30,9 @@ public class BulletController : MonoBehaviour {
         Destroy(gameObject);
         DamageController damageController = collider.GetComponent<DamageController>();
         if(damageController != null) {
-            damageController.Damage(damage);
+            if(!collider.CompareTag("Ground")) {
+                damageController.Damage(damage);
+            }
         }
     }
 }

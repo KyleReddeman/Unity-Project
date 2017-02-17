@@ -8,6 +8,7 @@ public class PlayerFire : MonoBehaviour {
     public GameObject projectile;
     public Transform bulletSpawnPosition;
     public AudioSource audio;
+    public float fireDelay = .2f;
 	// Use this for initialization
 	void Start () {
 
@@ -18,9 +19,9 @@ public class PlayerFire : MonoBehaviour {
         float input = Input.GetAxis("Fire1");
         if(input > .2f && !fired) {
             fired = true;
-            Instantiate(projectile, bulletSpawnPosition.position, Quaternion.identity);
+            Instantiate(projectile, bulletSpawnPosition.position, bulletSpawnPosition.rotation);
             audio.Play();
-            Invoke("CanFire", .3f);
+            Invoke("CanFire", fireDelay);
         }
 	}
 
