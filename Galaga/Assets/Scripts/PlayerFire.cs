@@ -7,6 +7,7 @@ public class PlayerFire : MonoBehaviour {
     private bool fired = false;
     public GameObject projectile;
     public Transform bulletSpawnPosition;
+    public AudioSource audio;
 	// Use this for initialization
 	void Start () {
 
@@ -18,6 +19,7 @@ public class PlayerFire : MonoBehaviour {
         if(input > .2f && !fired) {
             fired = true;
             Instantiate(projectile, bulletSpawnPosition.position, Quaternion.identity);
+            audio.Play();
             Invoke("CanFire", .3f);
         }
 	}
