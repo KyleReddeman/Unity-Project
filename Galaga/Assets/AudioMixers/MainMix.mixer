@@ -66,7 +66,7 @@ AudioMixerSnapshotController:
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: 43d232b9c4238a44d9b27c9fc6bd449c
   m_FloatValues:
-    3fc935e1283df3c4480bc4815ee4bb2f: -4.560346
+    3fc935e1283df3c4480bc4815ee4bb2f: -4.9356413
     1ccae396298cde545bb7e97dd1548e03: -16.035946
     03e8a2fa4c5e7564599389b657dd1053: 0.10800299
     a54b97bdca4cbcc40a28abec0a897851: 6.7923827
@@ -76,7 +76,7 @@ AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: New Group
+  m_Name: Music
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: ac998f63f663ca04fbfa81e90e2e7a64
   m_Children: []
@@ -93,7 +93,7 @@ AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: New Group
+  m_Name: SFX
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 88607abec1efe9b4faf56c5ff56af842
   m_Children: []
@@ -110,7 +110,7 @@ AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: New Group
+  m_Name: Engine
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 202c68a72ef0c5044b1a405cf969bac7
   m_Children: []

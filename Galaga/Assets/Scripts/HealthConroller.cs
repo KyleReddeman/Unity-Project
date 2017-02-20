@@ -15,6 +15,7 @@ public class HealthConroller : MonoBehaviour {
 
     private DamageController playerDamageController;
     private DamageController groundDamageController;
+    private bool gameOver = false;
 
 	// Use this for initialization
 	void Start () {
@@ -23,19 +24,28 @@ public class HealthConroller : MonoBehaviour {
 
         playerSlider.maxValue = playerDamageController.startingHealth;
         groundSlider.maxValue = groundDamageController.startingHealth;
+        UpdateUI();
 
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        UpdateUI();
-	}
 
-    void UpdateUI() {
-        playerSlider.value = playerDamageController.health;
-        groundSlider.value = groundDamageController.health;
+    }
 
-        playerFillImage.color = Color.Lerp(noHealthColor, fullHealthColor, playerDamageController.health / playerDamageController.startingHealth);
-        groundFillImage.color = Color.Lerp(noHealthColor, fullHealthColor, groundDamageController.health / groundDamageController.startingHealth);
+    public void UpdateUI() {
+        float playerHealth = playerDamageController.health;
+        float groundHealth = groundDamageController.health;
+        playerSlider.value = playerHealth;
+        groundSlider.value = groundHealth;
+
+        gameOver = playerHealth <= 0f || groundHealth <= 0f;
+
+        playerFillImage.color = Color.Lerp(noHealthColor, fullHealthColor, playerHealth / playerDamageController.startingHealth);
+        groundFillImage.color = Color.Lerp(noHealthColor, fullHealthColor, groundHealth / groundDamageController.startingHealth);
+    }
+
+    public bool GameOver() {
+        return gameOver;
     }
 }

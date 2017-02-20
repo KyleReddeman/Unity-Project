@@ -7,17 +7,19 @@ public class SpawnEnemies : MonoBehaviour {
     public Camera camera;
     public float minSpawnTime = 2f;
     public float maxSpawnTime = 5f;
+    public int numberOfEnemies = 0;
     public GameObject[] enemies;
     private Transform[] spawnPoints = new Transform[5];
+    private HealthConroller healthController;
+    private int maxEnemies;
 	// Use this for initialization
 	void Start () {
+        healthController = gameObject.GetComponent<HealthConroller>();
 		for(int i = 0; i < spawnPoints.Length; i++) {
             Transform transform = new GameObject().transform;
             transform.position = camera.ViewportToWorldPoint(new Vector3(.2f * i + .1f, 1f, 10f));
             spawnPoints[i] = transform;
         }
-        float spawnTime = Random.Range(minSpawnTime, maxSpawnTime);
-        Invoke("Spawn", spawnTime);
     }
 	
 	// Update is called once per frame
@@ -25,11 +27,27 @@ public class SpawnEnemies : MonoBehaviour {
         
 	}
 
-    void Spawn() {
+    public void Spawn() {
+        numberOfEnemies++;
         int spawnPoint = Random.Range(0, 5);
         GameObject enemy = enemies[Random.Range(0, enemies.Length)];
         Instantiate(enemy, spawnPoints[spawnPoint].position, Quaternion.identity);
         float spawnTime = Random.Range(minSpawnTime, maxSpawnTime);
-        Invoke("Spawn", spawnTime);
+        if(!healthController.GameOver() && !ReachedMax()) {
+            Debug.Log("mehhhhhhhhhh");
+            Invoke("Spawn", spawnTime);
+        }     
+    }
+
+    public void SetMaxEnemies(int max) {
+        maxEnemies = max;
+    }
+
+    public bool ReachedMax() {
+        return numberOfEnemies >= maxEnemies;
+    }
+
+    public void ResetWaveEnemies() {
+        numberOfEnemies = 0;
     }
 }

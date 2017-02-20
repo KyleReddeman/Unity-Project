@@ -6,10 +6,12 @@ public class DamageController : MonoBehaviour {
 
     public float startingHealth;
     public float health;
+    private HealthConroller healthController;
 
 	// Use this for initialization
 	void Start () {
         health = startingHealth;
+        healthController = GameObject.Find("GameManager").GetComponent<HealthConroller>();
 	}
 	
 	// Update is called once per frame
@@ -19,7 +21,8 @@ public class DamageController : MonoBehaviour {
 
     public void Damage(float damage) {
         health -= damage;
-        if(health <= 0f) {
+        healthController.UpdateUI();
+        if(health <= 0f && !gameObject.CompareTag("Ground")) {
             Destroy(gameObject);
         }
     }

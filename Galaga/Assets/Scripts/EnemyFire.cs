@@ -8,10 +8,10 @@ public class EnemyFire : MonoBehaviour {
     public GameObject bullet;
     public AudioSource audio;
     public float fireDelay = 1f;
-    private bool canFire = true;
+    private bool canFire = false;
 	// Use this for initialization
 	void Start () {
-		
+        Invoke("Fire", .5f);
 	}
 	
 	// Update is called once per frame
